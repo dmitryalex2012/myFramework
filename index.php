@@ -8,8 +8,10 @@ if (empty($url)){
 
 $url = rtrim($url, '/');
 $url = explode('/', $url);
-require 'controllers/'.$url[0].'.php';
-$controller = new $url[0];
+require 'controllers/' . $url[0] . 'Controller.php';
+
+$controllerName = $url[0] . "Controller";
+$controller = new $controllerName;
 $action = $url[1];
 
 if(isset($url[2])) {
