@@ -13,12 +13,13 @@ require 'controllers/' . $url[0] . 'Controller.php';
 $controllerName = $url[0] . "Controller";
 $controller = new $controllerName;
 $action = $url[1];
+$data = $url[2];
 
-if(isset($url[2])) {
-    $controller->$url[1]($url[2]);
+if(isset($data)) {
+    $controller->$action($data);
 }
 else {
-    if(isset($url[1])) {
+    if(isset($action)) {
         $controller->$action();
     }
 }

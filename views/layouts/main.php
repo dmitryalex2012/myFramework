@@ -1,9 +1,14 @@
 
+<?php
+/* @var $content string */
+?>
+
 <html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Train WEB page</title>
+    <link rel="stylesheet" href="../../web/css/main.css">
     <link rel="stylesheet" href="../../web/css/index.css">
     <!--    <link rel="stylesheet" href="lesson1.css">-->
     <!--    <link rel="stylesheet" href="lesson2.css">-->
@@ -15,20 +20,18 @@
 
 <header>
 
-    <nav>
-        <ul class="menu">
-            <li><a href="index.php">NIX</a></li>
-            <li><a href="index.php?valueKey=lessons1">Урок 1</a></li>
-            <li><a href="index.php?valueKey=lessons2">Урок 2</a></li>
-            <li><a href="index.php?valueKey=lessons3">Урок 3</a></li>
-        </ul>
-    </nav>
+    <?php
+    include 'layoutsComponents/navigation.php';
+    ?>
 
 </header>
 
 
 <main>
 
+    <?php
+    echo $content;
+    ?>
 
     <!--    File "index.php" using as layout.
             The pages are loaded depends of "valueKey" value in NAV menu.
@@ -62,7 +65,9 @@
 
 <footer>
 
-    <p class="pFooterMain">Designed by Dmitry Sechyn</p>
+    <?php
+    include 'layoutsComponents/footer.php';
+    ?>
 
 </footer>
 
