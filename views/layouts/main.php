@@ -30,6 +30,23 @@
 <main>
 
     <?php
+//    print_r($post);
+//    print_r($temp);
+
+
+
+//    $myArray = ['temp123' => "Ok",
+//        'temp45' => "Ok1"];
+//
+//    var_dump(extract($myArray));
+//    echo "<br>";
+//    echo $temp123;
+//    echo "<br>";
+//    echo $temp45;
+
+
+
+
     echo $content;
     ?>
 

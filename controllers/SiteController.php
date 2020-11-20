@@ -6,7 +6,7 @@ class SiteController extends Controller
     public function index()
     {
 
-        $this->render('site/index');
+        $this->render(['site/index']);
 
     }
 
