@@ -1,14 +1,13 @@
 <?php
 include "Controller.php";
-include 'post1.php';
 
 class Post1Controller extends Controller
 {
     public function index()
     {
-//        $post1 = "Hello";
+        $post1 = include 'models/post1.php';
         $this->render(['post1/index',
-//            'post' => $post1
+            'post' => $post1
             ]);
     }
 

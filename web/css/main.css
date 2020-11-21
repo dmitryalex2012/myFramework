@@ -1,3 +1,25 @@
 h1{
     text-align: center;
 }
+
+h2{
+    text-align: center;
+}
+
+.contentPost{
+    margin: 0 30px;
+}
+
+.pContent{
+    text-align: justify;
+}
+
+.pAuthor{
+    text-align: right;
+    margin-right: 30px;
+}
+
+p{
+    text-indent: 30px;
+    margin: 0;
+}

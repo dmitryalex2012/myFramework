@@ -1,7 +1,24 @@
-
+<?php
+/* @var $post array */
+?>
+<div class="contentPost">
     <h1>Post 1</h1>
 
-<?php
-    echo "12345";
-?>
-    <h2>hgcudfgv</h2>
+    <h2>
+        <?php
+        echo $post['title'];
+        ?>
+    </h2>
+
+    <div class="pContent">
+        <?php
+        echo $post['content'];
+        ?>
+    </div>
+
+    <div class="pAuthor">
+        <?php
+        echo $post['author'];
+        ?>
+    </div>
+</div>
