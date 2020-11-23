@@ -2,7 +2,7 @@
 
 return [
     'hostname' => 'localhost',
-    'dbname' => 'trainweb',
+    'dbname' => 'myframewok',
     'user' => 'sitemanufactura',
     'pass' => '200384'
 ];

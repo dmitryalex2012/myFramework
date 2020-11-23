@@ -8,12 +8,15 @@ if (empty($url)){
 
 $url = rtrim($url, '/');
 $url = explode('/', $url);
+
 require 'controllers/' . $url[0] . 'Controller.php';
 
 $controllerName = $url[0] . "Controller";
 $controller = new $controllerName;
 $action = $url[1];
-$data = $url[2];
+if (isset($_GET["valueKey"])){
+    $data = $_GET["valueKey"];
+}
 
 if(isset($data)) {
     $controller->$action($data);
@@ -23,4 +26,4 @@ else {
         $controller->$action();
     }
 }
-
+//
