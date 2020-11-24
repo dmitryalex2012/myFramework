@@ -13,6 +13,9 @@
     <div class="pContent">
         <?php
         echo $post['content'];
+
+        var_dump($result);
+
         ?>
     </div>
 

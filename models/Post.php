@@ -5,6 +5,10 @@
 class Post extends MyActiveRecord
 {
 
+    public function getTable()
+    {
+        return $this->getTableRow();
+    }
 
 
 
