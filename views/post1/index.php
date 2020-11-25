@@ -12,9 +12,31 @@
 
     <div class="pContent">
         <?php
-        echo $post['content'];
+//        echo $post['content'];
 
-        var_dump($result);
+//        $myArray = (array)$result;
+//        var_dump($myArray);
+//        echo $myArray['title'];
+
+//        echo '<pre>';
+//        print_r($result);
+//        echo '</pre>';
+        echo $result['content'];
+//        echo $result[2];
+//        echo gettype($result);
+
+//                    foreach($result as $row) {
+
+//                        echo "<pre>";
+//                        print_r($row);
+//                        echo "</pre>";
+
+//                        print $row['id'] . "\r\n";
+//                        print $row['title'] . "\r\n";
+//                        print $row['content'] . "\n";
+//                        print $row['note'] . "\n";
+//                        echo  "<br>";
+//                    }
 
         ?>
     </div>

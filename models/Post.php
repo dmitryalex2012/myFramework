@@ -1,6 +1,7 @@
 <?php
 
 //use app\models\Colleagues;
+include "MyActiveRecord.php";
 
 class Post extends MyActiveRecord
 {
