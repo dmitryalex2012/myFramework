@@ -1,45 +1,39 @@
 <?php
 
-//include './config.php';
-
-
 class MyActiveRecord
 {
-//    protected $hostname = $this->hostname;
-//$dbname = 'myframework';
-//$user = 'sitemanufactura';
-//$pass = 200384;
+private $config;
+private $hostname;
+private $dbname;
+private $user;
+private $pass;
 
+    /**
+     * MyActiveRecord constructor.
+     * Load DB parameters.
+     */
     public function __construct()
     {
-//        $hostname = $this->$hostname;
+        $this->config = include './config/config.php';
+        $this->hostname = $this->config['hostname'];
+        $this->dbname = $this->config['dbname'];
+        $this->user = $this->config['user'];
+        $this->pass = $this->config['pass'];
     }
 
-//    public function getTableRow($table, $stringID)
-    public function getTableRow()
+    /**Find the row with "$postName" identifier from "posts" table of the DB
+     *
+     * @param $postName
+     * @return mixed
+     */
+    public function findTableRow($postName)
     {
-
-        include './config.php';
-//        $myDB = include './config.php';
-//        $hostname = $myDB['hostname'];
-
-//        $hostname = 'localhost';
-//        $dbname = 'myframework';
-//        $user = 'sitemanufactura';
-//        $pass = 200384;
-
-        try {
-            $dbh = new PDO("mysql:host=$hostname; dbname=$dbname", $user, $pass);
-            $sth = $dbh->prepare("SELECT * FROM `posts` WHERE id = '1'");
+            $dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
+            $sth = $dbh->prepare("SELECT * FROM `posts` WHERE postName = '$postName'");
             $sth->execute();
             $result = $sth->fetch(PDO::FETCH_ASSOC);
             $dbh = null;
-        } catch (PDOException $e) {
-            $result = "Error!: " . $e->getMessage() . "<br/>";
-//            die();
-        }
 
         return $result;
-
     }
 }

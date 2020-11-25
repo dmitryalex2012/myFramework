@@ -1,22 +1,16 @@
 <?php
 
-//use app\models\Colleagues;
 include "MyActiveRecord.php";
 
 class Post extends MyActiveRecord
 {
-
-    public function getTable()
+    /**Get the row with "$postName" identifier from the DB table (using "MyActiveRecord" class)
+     *
+     * @param $postName
+     * @return mixed
+     */
+    public function getTableRow($postName)
     {
-        return $this->getTableRow();
+        return $this->findTableRow($postName);
     }
-
-
-
-//return Colleagues::find()->all();
-//}
-//
-//public static function findColleague($colleagueID)
-//{
-//    return Colleagues::find()->where(['id' => $colleagueID])->one();
 }
