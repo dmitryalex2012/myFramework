@@ -2,7 +2,7 @@
 
 return [
     'hostname' => 'localhost',
-    'dbname' => 'myframewok',
+    'dbname' => 'myframework',
     'user' => 'sitemanufactura',
     'pass' => '200384'
 ];

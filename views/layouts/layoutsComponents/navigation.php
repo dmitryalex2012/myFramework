@@ -4,5 +4,6 @@
         <li><a href="/post/index?valueKey=post1">Post 1</a></li>
         <li><a href="/post/index?valueKey=post2">Post 2</a></li>
         <li><a href="/post/index?valueKey=post3">Post 3</a></li>
+        <li><a href="/auth/index">Sign in</a></li>
     </ul>
 </nav>

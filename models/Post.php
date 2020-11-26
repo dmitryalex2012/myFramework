@@ -6,11 +6,11 @@ class Post extends MyActiveRecord
 {
     /**Get the row with "$postName" identifier from the DB table (using "MyActiveRecord" class)
      *
-     * @param $postName
+     * @param $identifier
      * @return mixed
      */
-    public function getTableRow($postName)
+    public function getTableRow($identifier)
     {
-        return $this->findTableRow($postName);
+        return $this->findTableRow($identifier);
     }
 }

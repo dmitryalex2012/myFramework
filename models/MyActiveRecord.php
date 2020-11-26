@@ -8,8 +8,8 @@ private $dbname;
 private $user;
 private $pass;
 
-    /**
-     * MyActiveRecord constructor.
+    /**MyActiveRecord constructor.
+     *
      * Load DB parameters.
      */
     public function __construct()
@@ -23,13 +23,13 @@ private $pass;
 
     /**Find the row with "$postName" identifier from "posts" table of the DB
      *
-     * @param $postName
+     * @param $identifier
      * @return mixed
      */
-    public function findTableRow($postName)
+    protected function findTableRow($identifier)
     {
             $dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
-            $sth = $dbh->prepare("SELECT * FROM `posts` WHERE postName = '$postName'");
+            $sth = $dbh->prepare("SELECT * FROM `posts` WHERE postName = '$identifier'");
             $sth->execute();
             $result = $sth->fetch(PDO::FETCH_ASSOC);
             $dbh = null;
