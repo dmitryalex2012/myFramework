@@ -1,24 +1,24 @@
 <?php
-/* @var $result array */
+/* @var $viewFile array */
 ?>
 <div class="contentPost">
     <h1>Post 3</h1>
 
     <h2>
         <?php
-        echo $result['title'];
+        echo $viewFile['title'];
         ?>
     </h2>
 
     <div class="pContent">
         <?php
-        echo $result['content'];
+        echo $viewFile['content'];
         ?>
     </div>
 
     <div class="pAuthor">
         <?php
-        echo $result['author'];
+        echo $viewFile['author'];
         ?>
     </div>
 </div>

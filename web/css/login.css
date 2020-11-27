@@ -1,0 +1,29 @@
+.inputForm{
+    margin-top: 30px;
+}
+
+.stringName, .stringEmail{
+    text-align: center;
+    width: 300px;
+}
+
+.inputName, .inputButton, .displayString, .inputEmail{
+    display: flex;
+    justify-content: center;
+}
+
+.inputName{
+    margin-top: 15px;
+}
+
+.displayString{
+    font-size: larger;
+}
+/*.inputString{*/
+/*    height: 25px;*/
+/*}*/
+
+.inputButton{
+    margin-top: 10px;
+}
+

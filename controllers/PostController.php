@@ -4,12 +4,17 @@ include './models/Post.php';
 
 class PostController extends Controller
 {
+    protected $db;
+
+    public function __construct()
+    {
+        $this->db = new Post();
+    }
+
     public function index($postName)
     {
-        $result = new Post();
-
         $this->render([ $postName .'/index',
-            'result' => $result->getTableRow($postName)
+            'viewFile' => $this->db->getTableRow('posts', 'postName', $postName)
             ]);
     }
 }

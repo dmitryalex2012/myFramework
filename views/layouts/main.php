@@ -10,6 +10,7 @@
     <title>Train WEB page</title>
     <link rel="stylesheet" href="../../web/css/main.css">
     <link rel="stylesheet" href="../../web/css/index.css">
+    <link rel="stylesheet" href="../../web/css/login.css">
     <!--    <link rel="stylesheet" href="lesson1.css">-->
     <!--    <link rel="stylesheet" href="lesson2.css">-->
     <!--    <link rel="stylesheet" href="lesson3.css">-->

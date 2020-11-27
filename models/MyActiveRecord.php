@@ -23,13 +23,15 @@ private $pass;
 
     /**Find the row with "$postName" identifier from "posts" table of the DB
      *
+     * @param $table
+     * @param $rowIdentifier
      * @param $identifier
      * @return mixed
      */
-    protected function findTableRow($identifier)
+    public function findTableRow($table, $rowIdentifier, $identifier)
     {
             $dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
-            $sth = $dbh->prepare("SELECT * FROM `posts` WHERE postName = '$identifier'");
+            $sth = $dbh->prepare("SELECT * FROM `$table` WHERE $rowIdentifier = '$identifier'");
             $sth->execute();
             $result = $sth->fetch(PDO::FETCH_ASSOC);
             $dbh = null;
