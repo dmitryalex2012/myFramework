@@ -1,6 +1,6 @@
 <?php
 
-include "MyActiveRecord.php";
+include_once "MyActiveRecord.php";
 
 class Post extends MyActiveRecord
 {

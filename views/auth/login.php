@@ -54,7 +54,11 @@
         </label><br>
 
         <div class="inputButton">
-            <input type="submit" value="Login">
+            <input class="logButton" type="submit" value="Sign in">
+        </div>
+
+        <div class="inputButton">
+            <input class="logButton" type="submit" value="Registration">
         </div>
 
     </form>

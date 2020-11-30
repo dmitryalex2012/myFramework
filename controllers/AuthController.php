@@ -1,6 +1,5 @@
 <?php
 include "Controller.php";
-include "./services/Auth.php";
 
 class AuthController extends Controller
 {

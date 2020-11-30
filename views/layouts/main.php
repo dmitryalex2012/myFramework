@@ -31,6 +31,13 @@
 <main>
 
     <?php
+
+//    if (!empty($array)){
+//        extract($array);
+//    }
+//
+//    var_dump($array);
+
     echo $content;
     ?>
 

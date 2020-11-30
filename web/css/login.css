@@ -19,11 +19,12 @@
 .displayString{
     font-size: larger;
 }
-/*.inputString{*/
-/*    height: 25px;*/
-/*}*/
 
 .inputButton{
     margin-top: 10px;
+}
+
+.logButton{
+    width: 100px;
 }
 

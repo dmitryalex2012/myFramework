@@ -1,6 +1,6 @@
 <?php
 
-include './models/MyActiveRecord.php';
+include_once './models/MyActiveRecord.php';
 
 class Auth
 {
@@ -17,7 +17,7 @@ class Auth
      */
     public static function makeAuth()
     {
-        if (self::isLogged()){
+        if (self::testLogin()){
             $viewFile = 'auth/user';
         } else{
             $viewFile = 'auth/login';
@@ -26,20 +26,18 @@ class Auth
         return $viewFile;
     }
 
-    /**Is customer logged yet?
+    /**
+     * User login testing.
      *
      * @return bool
      */
-    private static function isLogged()
+    public static function testLogin()
     {
-//        session_start();
-//        unset($_SESSION['customerLogged']);
-
         session_start();
-        if (isset($_SESSION['customerLogged'])){
-            $result = true;
-        } else{
-            $result = false;
+        if (isset($_SESSION['userName'])){
+            $result = $_SESSION['userName'];
+        } else {
+            $result = null;
         }
 
         return $result;
@@ -64,7 +62,7 @@ class Auth
             if (!empty($user['loginName'])){
                 if ($user['password'] === $password) {
                     $viewFile = 'auth/user';
-                    self::userInSession();
+                    self::userInSession($user['loginName']);
 
                 }
             }
@@ -73,10 +71,9 @@ class Auth
         return $viewFile;
     }
 
-    protected static function userInSession()
+    protected static function userInSession($userName)
     {
         session_start();
-        $_SESSION['customerLogged'] = '';
+        $_SESSION['userName'] = $userName;
     }
-
 }
