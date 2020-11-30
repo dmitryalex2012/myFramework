@@ -16,5 +16,19 @@ class AuthController extends Controller
 
         $this->render([$viewFile]);
     }
+
+    /**
+     * Registration new user.
+     *
+     */
+    public function register()
+    {
+        /**
+         * Need to make!
+         */
+        $viewFile = 'auth/login';
+
+        $this->render([$viewFile]);
+    }
 }
 

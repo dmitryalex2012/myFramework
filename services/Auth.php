@@ -4,13 +4,6 @@ include_once './models/MyActiveRecord.php';
 
 class Auth
 {
-//    private $db;
-//
-//    public function __construct()
-//    {
-//        $this->db = new MyActiveRecord();
-//    }
-
     /**Customer authentication.
      *
      * @return string
@@ -29,7 +22,7 @@ class Auth
     /**
      * User login testing.
      *
-     * @return bool
+     * @return array
      */
     public static function testLogin()
     {
@@ -51,10 +44,10 @@ class Auth
     {
         $viewFile = 'auth/login';
 
-        if (!empty($_POST['loginName']) && !empty($_POST['password'])){
+        if (!empty($_POST['loginName']) && !empty($_POST['password']) && isset($_POST['login'])){
 
-            $loginName = $_POST['loginName'];
-            $password = $_POST['password'];
+            $loginName = htmlspecialchars($_POST['loginName']);
+            $password = htmlspecialchars($_POST['password']);
 
             $db = new MyActiveRecord();
             $user = $db->findTableRow('users', 'loginName', $loginName);
@@ -66,11 +59,18 @@ class Auth
 
                 }
             }
+        } elseif (isset($_POST['registration'])){
+            $viewFile = 'auth/registration';
         }
 
         return $viewFile;
     }
 
+    /**
+     * Write user in Session
+     *
+     * @param $userName
+     */
     protected static function userInSession($userName)
     {
         session_start();

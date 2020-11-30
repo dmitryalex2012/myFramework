@@ -1,11 +1,9 @@
 <?php
 
-
 class Render
 {
     /**
-     * Make  "$content" for "$array[0]" view file.
-     * Get the contents of the output buffer - "$array[0]" file
+     * Get content from view file.
      *
      * @param $array
      * @return false|string
@@ -14,6 +12,13 @@ class Render
     {
         $viewName ='views/' .  $array[0] . '.php';
 
+        /** Make data for view file from "$array[1], $array[2], ..." */
+        array_shift($array);
+        if (!empty($array)){
+            extract($array);
+        }
+
+        /**  Get the content from the "$array[0]" file. */
         ob_start();
         include($viewName);
         $content = ob_get_contents();
