@@ -1,44 +1,3 @@
-<?php
-//
-//?>
-
-<?php
-///** Converting inputted string */
-//if (($_POST['inputData']) === ""){
-//    $inputtedString = "Вы ничего не ввели";
-//} else{
-//    $inputtedString = strrev($_POST['inputData']);
-//}
-//?>
-<!---->
-<!--<div  class="outForm">-->
-<!--    <form action="index.php" method="post">-->
-<!---->
-<!--        <p class="displayString">--><?php //echo $inputtedString; ?><!--</p><br>-->
-<!---->
-<!--        <div class="outButton">-->
-<!--            <input type="submit" name="displayed" value="Registration">-->
-<!--        </div>-->
-<!---->
-<!--    </form>-->
-<!--</div>-->
-
-
-<!--<div  class="outForm">-->
-<!--    <form action="index.php" method="post">-->
-<!---->
-<!--        <p class="displayString">Input</p><br>-->
-<!---->
-<!--        <label>Ваше имя: <input type="text" name="name"></label>-->
-<!--        <label>Ваш email: <input type="text" name="email"></label>-->
-<!--        <label>Сообщение: <textarea name="message"></textarea></label>-->
-<!---->
-<!--        <div class="outButton">-->
-<!--            <input type="submit" name="displayed" value="Registration">-->
-<!--        </div>-->
-<!---->
-<!--    </form>-->
-<!--</div>-->
 
 <div  class="inputForm">
     <form action="/auth/testLogin" method="post">
@@ -54,12 +13,20 @@
         </label><br>
 
         <div class="inputButton">
-            <input class="logButton" type="submit" name="login" value="Sign in">
+            <button type="submit" name="login" class="btn btn-outline-success logButton">Sign in</button>
         </div>
 
         <div class="inputButton">
-            <input class="logButton" type="submit" name="registration" value="Registration">
+            <button type="submit" name="registration" class="btn btn-outline-primary logButton">Registration</button>
         </div>
 
     </form>
+</div>
+
+<div class="massageLogin">
+    <?php
+    if (isset($message)){
+        echo $message;
+    }
+    ?>
 </div>

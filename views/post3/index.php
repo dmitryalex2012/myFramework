@@ -2,13 +2,11 @@
 /* @var $viewFile array */
 ?>
 <div class="contentPost">
-    <h1>Post 3</h1>
-
-    <h2>
+    <h1>
         <?php
-        echo $viewFile['title'];
+        echo 'Post 3. ' . $viewFile['title'] . ' programming language.';
         ?>
-    </h2>
+    </h1>
 
     <div class="pContent">
         <?php

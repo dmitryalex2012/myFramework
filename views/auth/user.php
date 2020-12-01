@@ -1,3 +1,4 @@
 <?php
+/* @var $message string */
 
-echo "User page";
+echo $message;

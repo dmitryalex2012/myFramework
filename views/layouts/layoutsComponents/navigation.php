@@ -10,5 +10,12 @@ if (!isset($userName)){
         <li><a href="/post/index?valueKey=post2">Post 2</a></li>
         <li><a href="/post/index?valueKey=post3">Post 3</a></li>
         <li><a href="/auth/index"><?php echo mb_strimwidth($userName, 0, 15, "...") ?></a></li>
+        <?php
+        if ($userName != 'Sign in'):
+        ?>
+            <li><a href="/auth/out">Sign out</a></li>
+        <?php
+        endif;
+        ?>
     </ul>
 </nav>

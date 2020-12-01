@@ -7,7 +7,7 @@
     width: 300px;
 }
 
-.inputName, .inputButton, .displayString, .inputEmail{
+.inputName, .inputButton, .displayString, .inputEmail, .massageLogin{
     display: flex;
     justify-content: center;
 }
@@ -25,6 +25,6 @@
 }
 
 .logButton{
-    width: 100px;
+    width: 150px;
 }
 

@@ -76,4 +76,13 @@ class Auth
         session_start();
         $_SESSION['userName'] = $userName;
     }
+
+    /**
+     * Delete user from Session
+     */
+    public static function userOut()
+    {
+        session_start();
+        unset($_SESSION['userName']);
+    }
 }

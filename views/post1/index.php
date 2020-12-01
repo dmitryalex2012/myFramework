@@ -2,18 +2,35 @@
 /* @var $viewFile array */
 ?>
 <div class="contentPost">
-    <h1>Post 1</h1>
 
-    <h2>
+    <h1>
         <?php
-        echo $viewFile['title'];
+        echo 'Post 1. ' . $viewFile['title'] . ' programming language.';
         ?>
-    </h2>
+    </h1>
 
-    <div class="pContent">
-        <?php
-        echo $viewFile['content'];
-        ?>
+    <div class="row">
+
+        <div class="col-md-9 pContent">
+
+            <h5>Description:</h5>
+
+            <?php
+            echo $viewFile['content'];
+            ?>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <h5>Code example:</h5>
+
+            <?php
+            echo $viewFile['codeExample'];
+            ?>
+
+        </div>
+
     </div>
 
     <div class="pAuthor">
