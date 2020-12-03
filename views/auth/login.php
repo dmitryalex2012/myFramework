@@ -27,6 +27,7 @@
     <?php
     if (isset($message)){
         echo $message;
+//        var_dump($message);
     }
     ?>
 </div>

@@ -42,7 +42,9 @@ class Auth
      */
     public static function performingLogin()
     {
-        $viewFile = 'auth/login';
+//        $viewFile = 'auth/login';
+        $login['view'] = 'auth/login';
+        $login['message'] = 'Fill all fields.';
 
         if (!empty($_POST['loginName']) && !empty($_POST['password']) && isset($_POST['login'])){
 
@@ -54,16 +56,21 @@ class Auth
 
             if (!empty($user['loginName'])){
                 if ($user['password'] === $password) {
-                    $viewFile = 'auth/user';
+                    $login['view'] = 'auth/user';
+                    $login['message'] = null;
+//                    $viewFile = 'auth/user';
                     self::userInSession($user['loginName']);
 
                 }
             }
         } elseif (isset($_POST['registration'])){
-            $viewFile = 'auth/registration';
+            $login['view'] = 'auth/registration';
+            $login['message'] = null;
+//            $viewFile = 'auth/registration';
         }
 
-        return $viewFile;
+//        return $viewFile;
+        return $login;
     }
 
     /**

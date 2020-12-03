@@ -24,3 +24,11 @@
 
     </form>
 </div>
+
+<div class="massageLogin">
+    <?php
+    if (isset($message)){
+        echo $message;
+    }
+    ?>
+</div>

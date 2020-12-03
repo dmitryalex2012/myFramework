@@ -1,6 +1,7 @@
 <?php
+
 include "Controller.php";
-include "./services/Registration.php";
+include_once "./services/Registration.php";
 
 class AuthController extends Controller
 {
@@ -19,9 +20,14 @@ class AuthController extends Controller
      */
     public function testLogin()
     {
-        $viewFile = Auth::performingLogin();
+//        $viewFile = Auth::performingLogin();
+        $login = Auth::performingLogin();
 
-        $this->render([$viewFile]);
+//        $this->render([$viewFile]);
+
+        $this->render([$login['view'],
+            'message' => $login['message']
+        ]);
     }
 
     /**
@@ -29,10 +35,12 @@ class AuthController extends Controller
      */
     public function register()
     {
-        /**
-         * Need to make!
-         */
-        $registration = Registration::makeRegistration();
+        $user = $_POST['loginName'];
+        $pass = $_POST['password'];
+        $confirmPass = $_POST['confirmPassword'];
+        $registration = Registration::makeRegistration($user, $pass, $confirmPass);
+
+//        $registration['message'] = "1=" . $_POST['loginName'] . "2=" . $_POST['password'] . "3=" . $_POST['confirmPassword'];
 
         $this->render([$registration['view'],
             'message' => $registration['message']
