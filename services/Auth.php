@@ -27,6 +27,7 @@ class Auth
     public static function testLogin()
     {
         session_start();
+
         if (isset($_SESSION['userName'])){
             $result = $_SESSION['userName'];
         } else {
@@ -38,38 +39,41 @@ class Auth
 
     /**Performing customer login.
      *
-     * @return string
+     * @return array
      */
     public static function performingLogin()
     {
-//        $viewFile = 'auth/login';
         $login['view'] = 'auth/login';
         $login['message'] = 'Fill all fields.';
 
-        if (!empty($_POST['loginName']) && !empty($_POST['password']) && isset($_POST['login'])){
+        $loginName = htmlspecialchars($_POST['loginName']);
+        $password = htmlspecialchars($_POST['password']);
 
-            $loginName = htmlspecialchars($_POST['loginName']);
-            $password = htmlspecialchars($_POST['password']);
+        if (!empty($loginName) && !empty($password)){
 
             $db = new MyActiveRecord();
-            $user = $db->findTableRow('users', 'loginName', $loginName);
+            $userDB = $db->findTableRow('users', 'loginName', $loginName);
 
-            if (!empty($user['loginName'])){
-                if ($user['password'] === $password) {
-                    $login['view'] = 'auth/user';
-                    $login['message'] = null;
-//                    $viewFile = 'auth/user';
-                    self::userInSession($user['loginName']);
+            if (($userDB['loginName'] === $loginName) && ($userDB['password'] === $password)){
 
-                }
+                $login['view'] = 'auth/user';
+                $login['message'] = null;
+                self::userInSession($userDB['loginName']);
+
+            } elseif(($userDB['loginName'] != $loginName) || ($userDB['password'] != $password)){
+
+                $login['view'] = 'auth/login';
+                $login['message'] = 'Illegal login or password.';
+
             }
+
         } elseif (isset($_POST['registration'])){
+
             $login['view'] = 'auth/registration';
             $login['message'] = null;
-//            $viewFile = 'auth/registration';
+
         }
 
-//        return $viewFile;
         return $login;
     }
 

@@ -1,6 +1,6 @@
 
 <div  class="inputForm">
-    <form action="/auth/register" method="post">
+    <form action="/auth/registration" method="post">
 
         <h2>Registration</h2>
 

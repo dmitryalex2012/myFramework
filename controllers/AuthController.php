@@ -20,10 +20,7 @@ class AuthController extends Controller
      */
     public function testLogin()
     {
-//        $viewFile = Auth::performingLogin();
         $login = Auth::performingLogin();
-
-//        $this->render([$viewFile]);
 
         $this->render([$login['view'],
             'message' => $login['message']
@@ -33,14 +30,12 @@ class AuthController extends Controller
     /**
      * Registration new user.
      */
-    public function register()
+    public function registration()
     {
         $user = $_POST['loginName'];
         $pass = $_POST['password'];
         $confirmPass = $_POST['confirmPassword'];
         $registration = Registration::makeRegistration($user, $pass, $confirmPass);
-
-//        $registration['message'] = "1=" . $_POST['loginName'] . "2=" . $_POST['password'] . "3=" . $_POST['confirmPassword'];
 
         $this->render([$registration['view'],
             'message' => $registration['message']
