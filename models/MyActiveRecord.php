@@ -7,6 +7,7 @@ private $hostname;
 private $dbname;
 private $user;
 private $pass;
+private $dbh;
 
     /**MyActiveRecord constructor.
      *
@@ -19,6 +20,7 @@ private $pass;
         $this->dbname = $this->config['dbname'];
         $this->user = $this->config['user'];
         $this->pass = $this->config['pass'];
+        $this->dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
     }
 
     /**Find the row with "$postName" identifier from "posts" table of the DB
@@ -30,12 +32,19 @@ private $pass;
      */
     public function findTableRow($table, $rowIdentifier, $identifier)
     {
-            $dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
-            $sth = $dbh->prepare("SELECT * FROM `$table` WHERE $rowIdentifier = '$identifier'");
+//            $dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
+            $sth = $this->dbh->prepare("SELECT * FROM `$table` WHERE $rowIdentifier = '$identifier'");
             $sth->execute();
             $result = $sth->fetch(PDO::FETCH_ASSOC);
-            $dbh = null;
+//            $dbh = null;
 
         return $result;
+    }
+
+    public function writeTableRow($table, $loginName, $password, $name, $email, $photo)
+    {
+        $sth = $this->dbh->prepare("INSERT IN `$table` SET `loginName` = $loginName, `password` = $password, `name` = $name, 
+                                        `email` = $email, `photo` = $photo");
+        $sth->execute();
     }
 }
