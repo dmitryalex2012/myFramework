@@ -47,14 +47,14 @@ private $dbh;
      * @param $table
      * @param $loginName
      * @param $password
-     * @param $name
+     * @param $phone
      * @param $email
      * @param $photo
      */
-    public function writeTableRow($table, $loginName, $password, $name, $email, $photo)
+    public function writeTableRow($table, $loginName, $password, $phone, $email, $photo)
     {
-        $sth = $this->dbh->prepare("INSERT INTO `$table` (loginName, password, name, email, photo) VALUES (?,?,?,?,?)");
-        $sth->execute([$loginName, $password, $name, $email, $photo]);
+        $sth = $this->dbh->prepare("INSERT INTO `$table` (loginName, password, phone, email, photo) VALUES (?,?,?,?,?)");
+        $sth->execute([$loginName, $password, $phone, $email, $photo]);
     }
 }
 

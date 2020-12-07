@@ -15,9 +15,6 @@ class Registration
 
         } else {
 
-//            $userDB = 'Alex';       // NEED
-//            $passDB = "12345";      //      DELETE
-
             $db = new MyActiveRecord();
             $userDB = $db->findTableRow('users', 'loginName', $user);
 
@@ -33,19 +30,11 @@ class Registration
 
             /** Registration performing. */
             } else{
-                /**
-                 * Need to make write to DB new user.
-                 */
-                $newUser['loginName'] = $user;
-                $newUser['password'] = $pass;
 
-                $db->writeTableRow('users', $newUser['loginName'], $newUser['password'], null, null, null);
-//                $message = $db->writeTableRow('users', $newUser['loginName'], $newUser['password'], null, null, null);
+                $db->writeTableRow('users', $user, $pass, null, null, null);
 
                 $registration['view'] = 'auth/user';
-                $registration['message'] = 'You are registered successfully.';
-//                $registration['message'] = $message;
-
+                $registration['message'] = "You are registered successfully. <br> Perform login.";
             }
         }
 

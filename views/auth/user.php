@@ -1,4 +1,11 @@
 <?php
 /* @var $message string */
+?>
 
-echo $message;
+
+<p class="pUser">
+    <?php
+    echo $message;
+    ?>
+</p>
+
