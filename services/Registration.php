@@ -29,7 +29,7 @@ class Registration
             } elseif ($userDB['loginName'] === $user){
 
                 $registration['view'] = 'auth/registration';
-                $registration['message'] = "User with login $user already exists.";
+                $registration['message'] = "User with login \"$user\" already exists.";
 
             /** Registration performing. */
             } else{
@@ -40,9 +40,11 @@ class Registration
                 $newUser['password'] = $pass;
 
                 $db->writeTableRow('users', $newUser['loginName'], $newUser['password'], null, null, null);
+//                $message = $db->writeTableRow('users', $newUser['loginName'], $newUser['password'], null, null, null);
 
                 $registration['view'] = 'auth/user';
                 $registration['message'] = 'You are registered successfully.';
+//                $registration['message'] = $message;
 
             }
         }

@@ -9,7 +9,8 @@ private $user;
 private $pass;
 private $dbh;
 
-    /**MyActiveRecord constructor.
+    /**
+     * MyActiveRecord constructor.
      *
      * Load DB parameters.
      */
@@ -23,7 +24,8 @@ private $dbh;
         $this->dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
     }
 
-    /**Find the row with "$postName" identifier from "posts" table of the DB
+    /**
+     * Find the row with "$postName" identifier from "posts" table of the DB
      *
      * @param $table
      * @param $rowIdentifier
@@ -32,19 +34,27 @@ private $dbh;
      */
     public function findTableRow($table, $rowIdentifier, $identifier)
     {
-//            $dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
             $sth = $this->dbh->prepare("SELECT * FROM `$table` WHERE $rowIdentifier = '$identifier'");
             $sth->execute();
             $result = $sth->fetch(PDO::FETCH_ASSOC);
-//            $dbh = null;
 
         return $result;
     }
 
+    /**
+     * Add new user to DB
+     *
+     * @param $table
+     * @param $loginName
+     * @param $password
+     * @param $name
+     * @param $email
+     * @param $photo
+     */
     public function writeTableRow($table, $loginName, $password, $name, $email, $photo)
     {
-        $sth = $this->dbh->prepare("INSERT IN `$table` SET `loginName` = $loginName, `password` = $password, `name` = $name, 
-                                        `email` = $email, `photo` = $photo");
-        $sth->execute();
+        $sth = $this->dbh->prepare("INSERT INTO `$table` (loginName, password, name, email, photo) VALUES (?,?,?,?,?)");
+        $sth->execute([$loginName, $password, $name, $email, $photo]);
     }
 }
+
