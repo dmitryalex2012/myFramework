@@ -43,8 +43,16 @@ class Auth
      */
     public static function performingLogin()
     {
-        $login['view'] = 'auth/login';
-        $login['message'] = 'Fill all fields.';
+        $login = [
+            'view' => 'auth/login',
+            'message' => 'Fill all fields.',
+            'loginName' => null,
+            'password' => null,
+            'phone' => null,
+            'email' => null,
+            'photo' => null
+        ];
+
 
         $loginName = htmlspecialchars($_POST['loginName']);
         $password = htmlspecialchars($_POST['password']);
@@ -54,16 +62,27 @@ class Auth
             $db = new MyActiveRecord();
             $userDB = $db->findTableRow('users', 'loginName', $loginName);
 
-            if (($userDB['loginName'] === $loginName) && ($userDB['password'] === $password)){
-
-                $login['view'] = 'auth/user';
-                $login['message'] = null;
-                self::userInSession($userDB['loginName']);
-
-            } elseif(($userDB['loginName'] != $loginName) || ($userDB['password'] != $password)){
+            if(($userDB['loginName'] != $loginName) || ($userDB['password'] != $password)){
 
                 $login['view'] = 'auth/login';
                 $login['message'] = 'Illegal login or password.';
+
+            } elseif (($userDB['loginName'] === $loginName) && ($userDB['password'] === $password)){
+
+
+                /** Need to insert corresponding data to array.*/
+                $login = [
+                    'view' => 'auth/user',
+                    'message' => null,
+                    'loginName' => null,
+                    'password' => null,
+                    'phone' => null,
+                    'email' => null,
+                    'photo' => null
+                ];
+
+
+                self::userInSession($userDB['loginName']);
 
             }
 

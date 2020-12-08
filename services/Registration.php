@@ -33,7 +33,7 @@ class Registration
 
                 $db->writeTableRow('users', $user, $pass, null, null, null);
 
-                $registration['view'] = 'auth/user';
+                $registration['view'] = 'auth/registrationSuccessful';
                 $registration['message'] = "You are registered successfully. <br> Perform login.";
             }
         }
