@@ -4,27 +4,48 @@
 ?>
 
 
-<p class="pUser">
     <?php
-//    echo $message;
-//    echo $userData['message'];
-    var_dump($userData);
+//    echo '<pre>';
+//    var_dump($userData);
+//    echo '</pre>';
     ?>
 
-    <br>
 
-    <?php
-    $login['view'] = 'auth/login';
-    $login['message'] = 'Fill all fields.';
-    $login = array(
-        'loginName' => "Alex",
-        'password' => "123"
-    );
+<div class="userForm">
+    <form>
 
-    var_dump($login);
-    ?>
+        <div class="form-group text-center">
+            <label for="userEmail">Login</label>
+            <input type="text" class="form-control text-center" id="userEmail" name="userLogin" placeholder="<?php echo $userData['loginName']; ?>">
+        </div>
 
-</p>
+        <div class="form-group text-center">
+            <label for="userPhone">Phone</label>
+            <input type="text" class="form-control text-center" id="userPhone" name="userPhone" placeholder="<?php echo $userData['phone']; ?>">
+        </div>
+
+        <div class="form-group text-center">
+            <label for="userEmail">Email</label>
+            <input type="password" class="form-control text-center" id="userEmail" name="userEmail" placeholder="<?php echo $userData['email']; ?>">
+        </div>
+
+        <div class="form-group text-center">
+            <label for="userPhoto">Photo</label>
+            <input type="password" class="form-control text-center" id="userPhoto" name="userPhoto" placeholder="<?php echo $userData['photo']; ?>">
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 text-right">
+                <button type="submit" class="btn btn-outline-primary text-center changeButton">Save changes</button>
+            </div>
+
+            <div class="col-md-6 text-left">
+                <button type="submit" class="btn btn-outline-primary text-center saveButton">Load photo</button>
+            </div>
+        </div>
+
+    </form>
+</div>
 
 
 

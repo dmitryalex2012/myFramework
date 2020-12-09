@@ -1,0 +1,16 @@
+.userForm{
+    /*margin-top: 30px;*/
+    width: 50%;
+    margin: 30px auto 0;
+}
+
+.changeButton, .saveButton{
+    width: 150px;
+}
+
+.changeButton{
+    display: block;
+    margin-right: auto;
+}
+
+

@@ -47,7 +47,6 @@ class Auth
             'view' => 'auth/login',
             'message' => 'Fill all fields.',
             'loginName' => null,
-            'password' => null,
             'phone' => null,
             'email' => null,
             'photo' => null
@@ -69,18 +68,13 @@ class Auth
 
             } elseif (($userDB['loginName'] === $loginName) && ($userDB['password'] === $password)){
 
-
-                /** Need to insert corresponding data to array.*/
                 $login = [
                     'view' => 'auth/user',
-                    'message' => null,
-                    'loginName' => null,
-                    'password' => null,
-                    'phone' => null,
-                    'email' => null,
-                    'photo' => null
+                    'loginName' => $userDB['loginName'],
+                    'phone' => $userDB['phone'],
+                    'email' => $userDB['email'],
+                    'photo' => $userDB['photo']
                 ];
-
 
                 self::userInSession($userDB['loginName']);
 
