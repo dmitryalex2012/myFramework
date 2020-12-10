@@ -13,7 +13,7 @@
         </label><br>
 
         <div class="inputButton">
-            <button type="submit" name="login" class="btn btn-outline-success logButton">Sign in</button>
+            <button type="submit" name="login" class="btn btn-outline-success logButton">Log in</button>
         </div>
 
         <div class="inputButton">

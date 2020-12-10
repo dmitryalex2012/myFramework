@@ -1,6 +1,8 @@
 <?php
 /* @var $viewFile array */
 ?>
+
+
 <div class="contentPost">
 
     <h1>

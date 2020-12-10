@@ -6,17 +6,23 @@ class Auth
 {
     /**Customer authentication.
      *
-     * @return string
+     * @return array
      */
     public static function makeAuth()
     {
-        if (self::testLogin()){
-            $viewFile = 'auth/user';
+        if (self::findLogin()){
+
+            $login = self::findLogin();
+            $userDB = self::userDataFromDB($login);
+            $userDB['view'] = 'auth/user';
+
         } else{
-            $viewFile = 'auth/login';
+
+            $userDB['view'] = 'auth/login';
+
         }
 
-        return $viewFile;
+        return $userDB;
     }
 
     /**
@@ -24,7 +30,7 @@ class Auth
      *
      * @return array
      */
-    public static function testLogin()
+    public static function findLogin()
     {
         session_start();
 
@@ -58,8 +64,7 @@ class Auth
 
         if (!empty($loginName) && !empty($password)){
 
-            $db = new MyActiveRecord();
-            $userDB = $db->findTableRow('users', 'loginName', $loginName);
+            $userDB = self::userDataFromDB($loginName);
 
             if(($userDB['loginName'] != $loginName) || ($userDB['password'] != $password)){
 
@@ -68,13 +73,16 @@ class Auth
 
             } elseif (($userDB['loginName'] === $loginName) && ($userDB['password'] === $password)){
 
-                $login = [
-                    'view' => 'auth/user',
-                    'loginName' => $userDB['loginName'],
-                    'phone' => $userDB['phone'],
-                    'email' => $userDB['email'],
-                    'photo' => $userDB['photo']
-                ];
+//                $login = [
+//                    'view' => 'auth/user',
+//                    'loginName' => $userDB['loginName'],
+//                    'phone' => $userDB['phone'],
+//                    'email' => $userDB['email'],
+//                    'photo' => $userDB['photo']
+//                ];
+
+                $login = self::userDataFromDB($loginName);
+                $login['view'] = 'auth/user';
 
                 self::userInSession($userDB['loginName']);
 
@@ -109,4 +117,17 @@ class Auth
         session_start();
         unset($_SESSION['userName']);
     }
+
+    /**
+     * Get user data from DB
+     *
+     * @param $loginName
+     * @return mixed
+     */
+    protected static function userDataFromDB($loginName)
+    {
+        $db = new MyActiveRecord();
+        return $db->findTableRow('users', 'loginName', $loginName);
+    }
+
 }

@@ -9,9 +9,11 @@ class AuthController extends Controller
      */
     public function index()
     {
-        $viewFile = Auth::makeAuth();
+        $userDB = Auth::makeAuth();
 
-        $this->render([$viewFile]);
+        $this->render([$userDB['view'],
+            'userData' => $userDB
+        ]);
     }
 
     /**
