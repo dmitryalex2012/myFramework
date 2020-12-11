@@ -12,7 +12,7 @@
 
 
 <div class="userForm">
-    <form>
+    <form  action="/user/dataChange" method="post">
 
         <div class="form-group text-center">
             <label for="userEmail">Login</label>

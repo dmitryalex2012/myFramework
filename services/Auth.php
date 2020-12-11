@@ -73,14 +73,6 @@ class Auth
 
             } elseif (($userDB['loginName'] === $loginName) && ($userDB['password'] === $password)){
 
-//                $login = [
-//                    'view' => 'auth/user',
-//                    'loginName' => $userDB['loginName'],
-//                    'phone' => $userDB['phone'],
-//                    'email' => $userDB['email'],
-//                    'photo' => $userDB['photo']
-//                ];
-
                 $login = self::userDataFromDB($loginName);
                 $login['view'] = 'auth/user';
 
@@ -124,7 +116,7 @@ class Auth
      * @param $loginName
      * @return mixed
      */
-    protected static function userDataFromDB($loginName)
+    public static function userDataFromDB($loginName)
     {
         $db = new MyActiveRecord();
         return $db->findTableRow('users', 'loginName', $loginName);

@@ -56,5 +56,22 @@ private $dbh;
         $sth = $this->dbh->prepare("INSERT INTO `$table` (loginName, password, phone, email, photo) VALUES (?,?,?,?,?)");
         $sth->execute([$loginName, $password, $phone, $email, $photo]);
     }
+
+    /**
+     * Replace the row in DB.
+     *
+     * @param $table
+     * @param $oldLoginName
+     * @param $newLoginName
+     * @param $password
+     * @param $phone
+     * @param $email
+     * @param $photo
+     */
+    public function changeTableRow($table, $oldLoginName, $newLoginName, $password, $phone, $email, $photo)
+    {
+//        $sth = $this->dbh->prepare("INSERT INTO `$table` (loginName, password, phone, email, photo) VALUES (?,?,?,?,?)");
+//        $sth->execute([$loginName, $password, $phone, $email, $photo]);
+    }
 }
 
