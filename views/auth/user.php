@@ -15,23 +15,23 @@
     <form  action="/user/dataChange" method="post">
 
         <div class="form-group text-center">
-            <label for="userEmail">Login</label>
-            <input type="text" class="form-control text-center" id="userEmail" name="userLogin" placeholder="<?php echo $userData['loginName']; ?>">
+            <label for="userEmail">You login: <?php echo $userData['loginName']; ?></label>
+            <input type="text" class="form-control text-center" id="userEmail" name="userLogin" placeholder="New login">
         </div>
 
         <div class="form-group text-center">
-            <label for="userPhone">Phone</label>
-            <input type="text" class="form-control text-center" id="userPhone" name="userPhone" placeholder="<?php echo $userData['phone']; ?>">
+            <label for="userPhone">You phone: <?php echo $userData['phone']; ?></label>
+            <input type="text" class="form-control text-center" id="userPhone" name="userPhone" placeholder="New phone number">
         </div>
 
         <div class="form-group text-center">
-            <label for="userEmail">Email</label>
-            <input type="password" class="form-control text-center" id="userEmail" name="userEmail" placeholder="<?php echo $userData['email']; ?>">
+            <label for="userEmail">You email: <?php echo $userData['email']; ?></label>
+            <input type="password" class="form-control text-center" id="userEmail" name="userEmail" placeholder="New email">
         </div>
 
         <div class="form-group text-center">
-            <label for="userPhoto">Photo</label>
-            <input type="password" class="form-control text-center" id="userPhoto" name="userPhoto" placeholder="<?php echo $userData['photo']; ?>">
+            <label for="userPhoto">You photo: <?php echo $userData['photo']; ?></label>
+            <input type="password" class="form-control text-center" id="userPhoto" name="userPhoto" placeholder="Change photo">
         </div>
 
         <div class="row">

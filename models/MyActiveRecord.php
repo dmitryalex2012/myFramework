@@ -61,17 +61,39 @@ private $dbh;
      * Replace the row in DB.
      *
      * @param $table
-     * @param $oldLoginName
-     * @param $newLoginName
-     * @param $password
-     * @param $phone
-     * @param $email
-     * @param $photo
+     * @param $oldUser
+     * @param $user
      */
-    public function changeTableRow($table, $oldLoginName, $newLoginName, $password, $phone, $email, $photo)
+    public function changeTableRow($table, $oldUser, $user)
     {
-//        $sth = $this->dbh->prepare("INSERT INTO `$table` (loginName, password, phone, email, photo) VALUES (?,?,?,?,?)");
-//        $sth->execute([$loginName, $password, $phone, $email, $photo]);
+        $user['loginName'] = self::verifyEmptyParameter($oldUser['loginName'], $user['loginName']);
+        $user['password'] = $oldUser['password'];
+        $user['phone'] = self::verifyEmptyParameter($oldUser['phone'], $user['phone']);
+        $user['email'] = self::verifyEmptyParameter($oldUser['email'], $user['email']);
+        $user['photo'] = self::verifyEmptyParameter($oldUser['photo'], $user['photo']);
+
+        $set = '`loginName` = :loginName, `password` = :password, `phone` = :phone, `email` = :email, `photo` = :photo';
+//        $sth = $this->dbh->prepare("UPDATE `$table` SET `loginName` = :loginName, `phone` = :phone, `photo` = :photo WHERE `loginName` = :oldLoginName");
+        $sth = $this->dbh->prepare("UPDATE `$table` SET $set WHERE `loginName` = :oldLoginName");
+        $execute = [
+            'loginName' => $user['loginName'],
+            'password' => $user['password'],
+            'phone' => $user['phone'],
+            'email' => $user['email'],
+            'photo' => $user['photo'],
+            'oldLoginName' => $oldUser['loginName']
+        ];
+//        $sth->execute(array('phone' => '01001', 'photo' => 'abc', 'oldLoginName' => $oldLoginName));
+        $sth->execute($execute);
+    }
+
+    private static function verifyEmptyParameter($oldParameter, $newParameter)
+    {
+        if (empty($newParameter)){
+            return $oldParameter;
+        } else{
+            return $newParameter;
+        }
     }
 }
 

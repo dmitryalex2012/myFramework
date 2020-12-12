@@ -14,22 +14,22 @@ class User
 
     public static function userDataChanging()
     {
-        $name = htmlspecialchars($_POST['userLogin']);
-        $phone = htmlspecialchars($_POST['userPhone']);
-        $email = htmlspecialchars($_POST['userEmail']);
-        $photo = htmlspecialchars($_POST['userPhoto']);
+        $user['loginName'] = htmlspecialchars($_POST['userLogin']);
+        $user['phone'] = htmlspecialchars($_POST['userPhone']);
+        $user['email'] = htmlspecialchars($_POST['userEmail']);
+        $user['photo'] = htmlspecialchars($_POST['userPhoto']);
 
-        $oldUser = Auth::userDataFromDB($name);
-        $pass = $oldUser['password'];
+        $oldUser = Auth::userDataFromDB($user['loginName']);
+//        $pass = $oldUser['password'];
 
-        if (empty($user['name'])) {
-            $user['name'] = 'No name';
+        if (empty($user['loginName'])) {
+            $user['loginName'] = $oldUser['loginName'];
         }
 
         $db = new MyActiveRecord();
-        $db->changeTableRow('users', $oldUser['loginName'], $name, $pass, $phone, $email, $photo);
+        $db->changeTableRow('users', $oldUser, $user);
 
-        return $user['name'] . " you data is changed.";
+        return $user['loginName'] . " you data is changed.";
     }
 
 }
