@@ -2,7 +2,7 @@
 /* @var $message string */
 ?>
 
-<p><?php echo $message; ?></p>
+<p class="pDataChanged"><?php echo $message; ?></p>
 
 
 

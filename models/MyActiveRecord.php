@@ -73,7 +73,6 @@ private $dbh;
         $user['photo'] = self::verifyEmptyParameter($oldUser['photo'], $user['photo']);
 
         $set = '`loginName` = :loginName, `password` = :password, `phone` = :phone, `email` = :email, `photo` = :photo';
-//        $sth = $this->dbh->prepare("UPDATE `$table` SET `loginName` = :loginName, `phone` = :phone, `photo` = :photo WHERE `loginName` = :oldLoginName");
         $sth = $this->dbh->prepare("UPDATE `$table` SET $set WHERE `loginName` = :oldLoginName");
         $execute = [
             'loginName' => $user['loginName'],
@@ -83,7 +82,6 @@ private $dbh;
             'photo' => $user['photo'],
             'oldLoginName' => $oldUser['loginName']
         ];
-//        $sth->execute(array('phone' => '01001', 'photo' => 'abc', 'oldLoginName' => $oldLoginName));
         $sth->execute($execute);
     }
 

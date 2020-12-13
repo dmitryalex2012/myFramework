@@ -14,7 +14,7 @@ class Auth
 
             $login = self::findLogin();
             $userDB = self::userDataFromDB($login);
-            $userDB['view'] = 'auth/user';
+            $userDB['view'] = 'user/user';
 
         } else{
 
@@ -74,7 +74,7 @@ class Auth
             } elseif (($userDB['loginName'] === $loginName) && ($userDB['password'] === $password)){
 
                 $login = self::userDataFromDB($loginName);
-                $login['view'] = 'auth/user';
+                $login['view'] = 'user/user';
 
                 self::userInSession($userDB['loginName']);
 

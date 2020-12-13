@@ -6,21 +6,21 @@ include_once 'Auth.php';
 class User
 {
 
-    public static function changeUserInSession($userName)
-    {
-        session_start();
-        $_SESSION['userName'] = $userName;
-    }
+    /**
+     *
+     * NEED TO TEST THE PRESENCE OF THE USER WITH NAME WHICH WAS INPUTTED!!!!!
+     *
+    */
 
     public static function userDataChanging()
     {
         $user['loginName'] = htmlspecialchars($_POST['userLogin']);
         $user['phone'] = htmlspecialchars($_POST['userPhone']);
         $user['email'] = htmlspecialchars($_POST['userEmail']);
-        $user['photo'] = htmlspecialchars($_POST['userPhoto']);
+        $user['photo'] = "./../web/photo/" . $_FILES['userPhoto']['name'];
 
-        $oldUser = Auth::userDataFromDB($user['loginName']);
-//        $pass = $oldUser['password'];
+        $oldName = self::getUserFromSession();
+        $oldUser = Auth::userDataFromDB($oldName);
 
         if (empty($user['loginName'])) {
             $user['loginName'] = $oldUser['loginName'];
@@ -29,7 +29,20 @@ class User
         $db = new MyActiveRecord();
         $db->changeTableRow('users', $oldUser, $user);
 
+        self::changeUserInSession($user['loginName']);
+
         return $user['loginName'] . " you data is changed.";
     }
 
+    private static function getUserFromSession()
+    {
+        session_start();
+        return $_SESSION['userName'];
+    }
+
+    public static function changeUserInSession($userName)
+    {
+        session_start();
+        $_SESSION['userName'] = $userName;
+    }
 }

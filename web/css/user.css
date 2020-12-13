@@ -1,5 +1,4 @@
 .userForm{
-    /*margin-top: 30px;*/
     width: 50%;
     margin: 30px auto 0;
 }
@@ -17,4 +16,17 @@
     font-weight: 500!important;
 }
 
+.userAvatar{
+    width: 100px;
+    height: 100px;
+    margin: 0 0 15px;
+}
 
+.saveChangesUser{
+    display: flex;
+    justify-content: center;
+}
+
+.changeButton{
+    margin: auto;
+}
