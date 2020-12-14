@@ -5,13 +5,11 @@ include_once 'Auth.php';
 
 class User
 {
-
     /**
+     * Changing user data.
      *
-     * NEED TO TEST THE PRESENCE OF THE USER WITH NAME WHICH WAS INPUTTED!!!!!
-     *
-    */
-
+     * @return string
+     */
     public static function userDataChanging()
     {
         $user['loginName'] = htmlspecialchars($_POST['userLogin']);
@@ -34,12 +32,22 @@ class User
         return $user['loginName'] . " you data is changed.";
     }
 
+    /**
+     * Get user name from session.
+     *
+     * @return mixed
+     */
     private static function getUserFromSession()
     {
         session_start();
         return $_SESSION['userName'];
     }
 
+    /**
+     * Change user name in session.
+     *
+     * @param $userName
+     */
     public static function changeUserInSession($userName)
     {
         session_start();

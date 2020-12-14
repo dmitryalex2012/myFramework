@@ -51,6 +51,14 @@ main{
     display: inline-block;
 }
 
+.navigationAvatar{
+    width: 25px;
+}
+
+.nameInNav{
+    padding-right: 5px!important;
+}
+
 footer{
     position: absolute;
     left: 0;

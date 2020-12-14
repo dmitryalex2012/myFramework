@@ -13,7 +13,7 @@ class Auth
         if (self::findLogin()){
 
             $login = self::findLogin();
-            $userDB = self::userDataFromDB($login);
+            $userDB = self::userDataFromDB($login['name']);
             $userDB['view'] = 'user/user';
 
         } else{
@@ -35,12 +35,18 @@ class Auth
         session_start();
 
         if (isset($_SESSION['userName'])){
-            $result = $_SESSION['userName'];
+
+            $userDB = self::userDataFromDB($_SESSION['userName']);
+            $user['photo'] = $userDB['photo'];
+            $user['name'] = $_SESSION['userName'];
+
         } else {
-            $result = null;
+
+            $user = null;
+
         }
 
-        return $result;
+        return $user;
     }
 
     /**Performing customer login.

@@ -3,6 +3,14 @@ include_once './models/MyActiveRecord.php';
 
 class Registration
 {
+    /**
+     * Registration performing.
+     *
+     * @param $user
+     * @param $pass
+     * @param $confirmPass
+     * @return mixed
+     */
     public static function makeRegistration($user, $pass, $confirmPass)
     {
         $registration['view'] = 'auth/registration';

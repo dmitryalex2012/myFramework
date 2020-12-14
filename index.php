@@ -6,7 +6,7 @@ if (empty($url)){
     $url = "site/index";
 }
 
-$url = rtrim($url, '/');
+$url = rtrim($url);
 $url = explode('/', $url);
 
 require 'controllers/' . $url[0] . 'Controller.php';

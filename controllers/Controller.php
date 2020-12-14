@@ -14,7 +14,7 @@ class Controller
     {
         $content = Render::getViewFile($array);
 
-        $userName = Auth::findLogin();
+        $user = Auth::findLogin();
 
         require 'views/layouts/main.php';
     }
