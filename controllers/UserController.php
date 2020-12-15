@@ -12,6 +12,9 @@ class UserController extends Controller
     {
         $result = User::userDataChanging();
 
+        $sendMail = User::sendMessage();
+        $result .= "<br>" . $sendMail;
+
         $this->render(['user/dataChanged',
             'message' => $result
         ]);

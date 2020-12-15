@@ -12,7 +12,6 @@ class AuthController extends Controller
         $userDB = Auth::makeAuth();
 
         $this->render([$userDB['view'],
-//        $this->render(['user/user',
             'userData' => $userDB
         ]);
     }

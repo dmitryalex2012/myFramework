@@ -53,4 +53,23 @@ class User
         session_start();
         $_SESSION['userName'] = $userName;
     }
+
+    /**
+     * Message sending via SMTP server
+     *
+     * @return string
+     */
+    public static function sendMessage()
+    {
+        $to = 'dmitryalex2012@gmail.com';
+        $subject = 'Registration confirmation.';
+        $message = 'You data is changed successfully.';
+        if (mail($to, $subject, $message)){
+            $result = "The message about registration was send successfully on administrator email.";
+        } else{
+            $result = "The message about registration was not send on administrator email.";
+        }
+
+        return $result;
+    }
 }
