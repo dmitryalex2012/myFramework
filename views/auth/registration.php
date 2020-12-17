@@ -7,7 +7,7 @@
 <!--        <p class="displayString">You are not logged. Please, login or perform registration.</p><br>-->
 
         <label class="inputName">
-            <input class="stringName" type="text" name="loginName" placeholder="Input login name">
+            <input class="stringName" type="text" name="loginName" placeholder="Input login name (begins with a letter)">
         </label><br>
 
         <label class="inputEmail">

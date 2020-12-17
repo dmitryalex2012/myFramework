@@ -16,6 +16,15 @@ class Registration
         $registration['view'] = 'auth/registration';
         $registration['message'] = '';
 
+        /** The LOGIN should begin from capital letter. */
+        if (!preg_match('/^[a-z]/i', $user)){
+
+            $registration['view'] = 'auth/registration';
+            $registration['message'] = 'Login should begins from letter.';
+
+        return $registration;
+    }
+
         if (empty($user) || empty($pass) || empty($confirmPass)){
 
             $registration['view'] = 'auth/registration';
