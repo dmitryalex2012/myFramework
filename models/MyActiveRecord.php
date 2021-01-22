@@ -2,7 +2,7 @@
 
 class MyActiveRecord
 {
-private $config;
+//private $config;
 private $hostname;
 private $dbname;
 private $user;
@@ -16,11 +16,19 @@ private $dbh;
      */
     public function __construct()
     {
-        $this->config = include './config/config.php';
-        $this->hostname = $this->config['hostname'];
-        $this->dbname = $this->config['dbname'];
-        $this->user = $this->config['user'];
-        $this->pass = $this->config['pass'];
+//        $this->config = include './config/config.php';
+//        $this->hostname = $this->config['hostname'];
+//        $this->dbname = $this->config['dbname'];
+//        $this->user = $this->config['user'];
+//        $this->pass = $this->config['pass'];
+//        $this->dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
+
+
+        global $config;
+        $this->hostname = $config['hostname'];
+        $this->dbname = $config['dbname'];
+        $this->user = $config['user'];
+        $this->pass = $config['pass'];
         $this->dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
     }
 

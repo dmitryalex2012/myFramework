@@ -1,5 +1,7 @@
 <?php
 
+$config = require __DIR__ . '/config/config.php';
+
 $url = $_GET['url'];
 
 if (empty($url)){
