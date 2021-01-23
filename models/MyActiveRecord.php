@@ -3,11 +3,11 @@
 class MyActiveRecord
 {
 //private $config;
-private $hostname;
-private $dbname;
-private $user;
-private $pass;
-private $dbh;
+//    private $hostname;
+//    private $dbname;
+//    private $user;
+//    private $pass;
+    private $dbh;
 
     /**
      * MyActiveRecord constructor.
@@ -16,7 +16,7 @@ private $dbh;
      */
     public function __construct()
     {
-//        $this->config = include './config/config.php';
+//        global $config;
 //        $this->hostname = $this->config['hostname'];
 //        $this->dbname = $this->config['dbname'];
 //        $this->user = $this->config['user'];
@@ -24,12 +24,11 @@ private $dbh;
 //        $this->dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
 
 
-        global $config;
-        $this->hostname = $config['hostname'];
-        $this->dbname = $config['dbname'];
-        $this->user = $config['user'];
-        $this->pass = $config['pass'];
-        $this->dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
+//        $this->hostname = DB_HOST;
+//        $this->dbname = DB_NAME;
+//        $this->dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", DB_USER, DB_PASS);
+        global $DB;
+        $this->dbh = $DB;
     }
 
     /**
@@ -42,9 +41,9 @@ private $dbh;
      */
     public function findTableRow($table, $rowIdentifier, $identifier)
     {
-            $sth = $this->dbh->prepare("SELECT * FROM `$table` WHERE $rowIdentifier = '$identifier'");
-            $sth->execute();
-            $result = $sth->fetch(PDO::FETCH_ASSOC);
+        $sth = $this->dbh->prepare("SELECT * FROM `$table` WHERE $rowIdentifier = '$identifier'");
+        $sth->execute();
+        $result = $sth->fetch(PDO::FETCH_ASSOC);
 
         return $result;
     }
@@ -102,4 +101,3 @@ private $dbh;
         }
     }
 }
-

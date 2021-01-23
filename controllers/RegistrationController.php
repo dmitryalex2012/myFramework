@@ -17,7 +17,6 @@ class RegistrationController extends Controller
 
         $this->render([$registration['view'],
             'message' => $registration['message']
-//            'userData' => $registration
             ]);
     }
 }
