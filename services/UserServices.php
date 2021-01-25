@@ -1,9 +1,9 @@
 <?php
 
 include_once './models/MyActiveRecord.php';
-include_once 'Auth.php';
+include_once 'AuthServices.php';
 
-class User
+class UserServices
 {
     /**
      * Changing user data.
@@ -18,7 +18,7 @@ class User
         $user['photo'] = "./../web/photo/" . $_FILES['userPhoto']['name'];
 
         $oldName = self::getUserFromSession();
-        $oldUser = Auth::userDataFromDB($oldName);
+        $oldUser = AuthServices::userDataFromDB($oldName);
 
         if (empty($user['loginName'])) {
             $user['loginName'] = $oldUser['loginName'];
@@ -62,7 +62,7 @@ class User
     public static function sendMessage()
     {
         $to = 'dmitryalex2012@gmail.com';
-        $subject = 'Registration confirmation.';
+        $subject = 'RegistrationServices confirmation.';
         $message = 'You data is changed successfully.';
         if (mail($to, $subject, $message)){
             $result = "The message about registration was send successfully on administrator email.";

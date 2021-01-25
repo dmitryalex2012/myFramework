@@ -2,11 +2,6 @@
 
 class MyActiveRecord
 {
-//private $config;
-//    private $hostname;
-//    private $dbname;
-//    private $user;
-//    private $pass;
     private $dbh;
 
     /**
@@ -16,19 +11,19 @@ class MyActiveRecord
      */
     public function __construct()
     {
-//        global $config;
-//        $this->hostname = $this->config['hostname'];
-//        $this->dbname = $this->config['dbname'];
-//        $this->user = $this->config['user'];
-//        $this->pass = $this->config['pass'];
-//        $this->dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", $this->user, $this->pass);
-
-
-//        $this->hostname = DB_HOST;
-//        $this->dbname = DB_NAME;
-//        $this->dbh = new PDO("mysql:host=$this->hostname; dbname=$this->dbname", DB_USER, DB_PASS);
         global $DB;
         $this->dbh = $DB;
+    }
+
+
+    /**
+     * The child class name determination. It's equal with DB table name.
+     *
+     * @return string
+     */
+    public static function get_class()
+    {
+        return get_called_class();
     }
 
     /**
@@ -41,6 +36,8 @@ class MyActiveRecord
      */
     public function findTableRow($table, $rowIdentifier, $identifier)
     {
+        $table = self::get_class();
+
         $sth = $this->dbh->prepare("SELECT * FROM `$table` WHERE $rowIdentifier = '$identifier'");
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_ASSOC);

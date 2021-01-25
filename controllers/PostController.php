@@ -1,20 +1,20 @@
 <?php
 include "Controller.php";
-include './models/Post.php';
+include './services/PostServices.php';
 
 class PostController extends Controller
 {
-    protected $db;
+    protected $post;
 
     public function __construct()
     {
-        $this->db = new Post();
+        $this->post = new PostServices();
     }
 
     public function index($postName)
     {
         $this->render([ $postName .'/index',
-            'viewFile' => $this->db->getTableRow('posts', 'postName', $postName)
+            'viewFile' => $this->post->getTableRow('posts', 'postName', $postName)
             ]);
     }
 }

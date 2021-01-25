@@ -1,10 +1,10 @@
 <?php
 include_once './models/MyActiveRecord.php';
 
-class Registration
+class RegistrationServices
 {
     /**
-     * Registration performing.
+     * RegistrationServices performing.
      *
      * @param $user
      * @param $pass
@@ -43,9 +43,9 @@ class Registration
             } elseif ($userDB['loginName'] === $user){
 
                 $registration['view'] = 'auth/registration';
-                $registration['message'] = "User with login \"$user\" already exists.";
+                $registration['message'] = "UserServices with login \"$user\" already exists.";
 
-            /** Registration performing. */
+            /** RegistrationServices performing. */
             } else{
 
                 $db->writeTableRow('users', $user, $pass, null, null, null);

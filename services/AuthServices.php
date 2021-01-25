@@ -2,7 +2,7 @@
 
 include_once './models/MyActiveRecord.php';
 
-class Auth
+class AuthServices
 {
     /**Customer authentication.
      *
@@ -26,7 +26,7 @@ class Auth
     }
 
     /**
-     * User login testing.
+     * UserServices login testing.
      *
      * @return array
      */

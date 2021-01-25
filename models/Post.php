@@ -11,8 +11,9 @@ class Post extends MyActiveRecord
      * @param $identifier
      * @return mixed
      */
-    public function getTableRow($table, $rowIdentifier, $identifier)
+    public static function getTableRow($table, $rowIdentifier, $identifier)
     {
-        return $this->findTableRow($table, $rowIdentifier, $identifier);
+        /** NEED CHANGE "new Post !!!!!" */
+        return (new Post)->findTableRow($table, $rowIdentifier, $identifier);
     }
 }

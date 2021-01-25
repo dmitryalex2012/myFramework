@@ -1,6 +1,6 @@
 <?php
 
-include_once './services/Auth.php';
+include_once './services/AuthServices.php';
 include './services/Render.php';
 
 class Controller
@@ -14,7 +14,7 @@ class Controller
     {
         $content = Render::getViewFile($array);
 
-        $user = Auth::findLogin();
+        $user = AuthServices::findLogin();
 
         require 'views/layouts/main.php';
     }

@@ -1,18 +1,18 @@
 <?php
 
 include "Controller.php";
-include "./services/User.php";
+include "./services/UserServices.php";
 
 class UserController extends Controller
 {
     /**
-     * User data changing.
+     * UserServices data changing.
      */
     public function dataChange()
     {
-        $result = User::userDataChanging();
+        $result = UserServices::userDataChanging();
 
-        $sendMail = User::sendMessage();
+        $sendMail = UserServices::sendMessage();
         $result .= "<br>" . $sendMail;
 
         $this->render(['user/dataChanged',

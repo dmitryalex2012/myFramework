@@ -9,7 +9,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-        $userDB = Auth::makeAuth();
+        $userDB = AuthServices::makeAuth();
 
         $this->render([$userDB['view'],
             'userData' => $userDB
@@ -21,7 +21,7 @@ class AuthController extends Controller
      */
     public function testLogin()
     {
-        $login = Auth::performingLogin();
+        $login = AuthServices::performingLogin();
 
         $this->render([$login['view'],
             'message' => $login['message'],
@@ -34,7 +34,7 @@ class AuthController extends Controller
      */
     public function out()
     {
-        Auth::userOut();
+        AuthServices::userOut();
 
         $this->render(['auth/login']);
     }
