@@ -2,7 +2,7 @@
 
 class MyActiveRecord
 {
-    private $dbh;
+    protected $dbh;
 
     /**
      * MyActiveRecord constructor.
@@ -17,16 +17,6 @@ class MyActiveRecord
 
 
     /**
-     * The child class name determination. It's equal with DB table name.
-     *
-     * @return string
-     */
-    public static function get_class()
-    {
-        return get_called_class();
-    }
-
-    /**
      * Find the row with "$postName" identifier from "posts" table of the DB
      *
      * @param $table
@@ -36,7 +26,7 @@ class MyActiveRecord
      */
     public function findTableRow($table, $rowIdentifier, $identifier)
     {
-        $table = self::get_class();
+        $table = static::class;
 
         $sth = $this->dbh->prepare("SELECT * FROM `$table` WHERE $rowIdentifier = '$identifier'");
         $sth->execute();
@@ -68,7 +58,7 @@ class MyActiveRecord
      * @param $oldUser
      * @param $user
      */
-    public function changeTableRow($table, $oldUser, $user)
+    public function changeTableRow($oldUser, $user)
     {
         $user['loginName'] = self::verifyEmptyParameter($oldUser['loginName'], $user['loginName']);
         $user['password'] = $oldUser['password'];

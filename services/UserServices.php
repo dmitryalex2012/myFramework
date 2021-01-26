@@ -1,16 +1,24 @@
 <?php
 
-include_once './models/MyActiveRecord.php';
+//include_once './models/MyActiveRecord.php';
+include_once './models/Users.php';
 include_once 'AuthServices.php';
 
 class UserServices
 {
+    private $users;
+
+    public function __construct()
+    {
+        $this->users = new Users();
+    }
+
     /**
      * Changing user data.
      *
      * @return string
      */
-    public static function userDataChanging()
+    public function userDataChanging()
     {
         $user['loginName'] = htmlspecialchars($_POST['userLogin']);
         $user['phone'] = htmlspecialchars($_POST['userPhone']);
@@ -24,8 +32,7 @@ class UserServices
             $user['loginName'] = $oldUser['loginName'];
         }
 
-        $db = new MyActiveRecord();
-        $db->changeTableRow('users', $oldUser, $user);
+        $this->users->changeRow($oldUser, $user);
 
         self::changeUserInSession($user['loginName']);
 
