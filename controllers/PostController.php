@@ -1,6 +1,6 @@
 <?php
 include "Controller.php";
-include './services/PostServices.php';
+include_once './services/PostServices.php';
 
 class PostController extends Controller
 {
@@ -14,7 +14,7 @@ class PostController extends Controller
     public function index($postName)
     {
         $this->render([ $postName .'/index',
-            'viewFile' => $this->post->getTableRow('posts', 'postName', $postName)
+            'viewFile' => $this->post->getTableRow('postName', $postName)
             ]);
     }
 }

@@ -1,8 +1,16 @@
 <?php
-include_once './models/MyActiveRecord.php';
+
+include_once './models/Users.php';
 
 class RegistrationServices
 {
+    private $users;
+
+    public function __construct()
+    {
+        $this->users = new Users();
+    }
+
     /**
      * RegistrationServices performing.
      *
@@ -11,7 +19,7 @@ class RegistrationServices
      * @param $confirmPass
      * @return mixed
      */
-    public static function makeRegistration($user, $pass, $confirmPass)
+    public function makeRegistration($user, $pass, $confirmPass)
     {
         $registration['view'] = 'auth/registration';
         $registration['message'] = '';
@@ -32,8 +40,7 @@ class RegistrationServices
 
         } else {
 
-            $db = new MyActiveRecord();
-            $userDB = $db->findTableRow('users', 'loginName', $user);
+            $userDB = $this->users->findRow('loginName', $user);
 
             if ($pass != $confirmPass) {
 
@@ -48,7 +55,7 @@ class RegistrationServices
             /** RegistrationServices performing. */
             } else{
 
-                $db->writeTableRow('users', $user, $pass, null, null, null);
+                $this->users->writeRow( $user, $pass, null, null, null);
 
                 $registration['view'] = 'auth/registrationSuccessful';
                 $registration['message'] = "You are registered successfully. <br> Perform login.";

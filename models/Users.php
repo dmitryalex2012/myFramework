@@ -10,8 +10,8 @@ class Users extends MyActiveRecord
      * @param $rowIdentifier
      * @param $identifier
      */
-    public function changeRow($rowIdentifier, $identifier)
+    public function changeTableRow($rowIdentifier, $identifier)
     {
-        self::changeTableRow($rowIdentifier, $identifier);
+        self::changeRow($rowIdentifier, $identifier);
     }
 }

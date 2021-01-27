@@ -19,12 +19,11 @@ class MyActiveRecord
     /**
      * Find the row with "$postName" identifier from "posts" table of the DB
      *
-     * @param $table
      * @param $rowIdentifier
      * @param $identifier
      * @return mixed
      */
-    public function findTableRow($table, $rowIdentifier, $identifier)
+    public function findRow($rowIdentifier, $identifier)
     {
         $table = static::class;
 
@@ -38,15 +37,16 @@ class MyActiveRecord
     /**
      * Add new user to DB
      *
-     * @param $table
      * @param $loginName
      * @param $password
      * @param $phone
      * @param $email
      * @param $photo
      */
-    public function writeTableRow($table, $loginName, $password, $phone, $email, $photo)
+    public function writeRow($loginName, $password, $phone, $email, $photo)
     {
+        $table = static::class;
+
         $sth = $this->dbh->prepare("INSERT INTO `$table` (loginName, password, phone, email, photo) VALUES (?,?,?,?,?)");
         $sth->execute([$loginName, $password, $phone, $email, $photo]);
     }
@@ -54,12 +54,13 @@ class MyActiveRecord
     /**
      * Replace the row in DB.
      *
-     * @param $table
      * @param $oldUser
      * @param $user
      */
-    public function changeTableRow($oldUser, $user)
+    public function changeRow($oldUser, $user)
     {
+        $table = static::class;
+
         $user['loginName'] = self::verifyEmptyParameter($oldUser['loginName'], $user['loginName']);
         $user['password'] = $oldUser['password'];
         $user['phone'] = self::verifyEmptyParameter($oldUser['phone'], $user['phone']);

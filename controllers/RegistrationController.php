@@ -5,7 +5,14 @@ include_once "./services/RegistrationServices.php";
 
 class RegistrationController extends Controller
 {
-     /**
+    private $registrationServices;
+
+    public function __construct()
+    {
+        $this->registrationServices = new RegistrationServices();
+    }
+
+    /**
      * RegistrationServices new user.
      */
     public function registration()
@@ -13,7 +20,7 @@ class RegistrationController extends Controller
         $user = $_POST['loginName'];
         $pass = $_POST['password'];
         $confirmPass = $_POST['confirmPassword'];
-        $registration = RegistrationServices::makeRegistration($user, $pass, $confirmPass);
+        $registration = $this->registrationServices->makeRegistration($user, $pass, $confirmPass);
 
         $this->render([$registration['view'],
             'message' => $registration['message']

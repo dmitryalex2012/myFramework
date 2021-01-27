@@ -1,14 +1,22 @@
 <?php
 
-include_once './models/MyActiveRecord.php';
+include_once './models/Users.php';
 
 class AuthServices
 {
-    /**Customer authentication.
+    public $users;
+
+    public function __construct()
+    {
+        $this->users = new Users();
+    }
+
+    /**
+     * Customer authentication.
      *
      * @return array
      */
-    public static function makeAuth()
+    public function makeAuth()
     {
         if (self::findLogin()){
 
@@ -30,7 +38,7 @@ class AuthServices
      *
      * @return array
      */
-    public static function findLogin()
+    public function findLogin()
     {
         session_start();
 
@@ -49,11 +57,12 @@ class AuthServices
         return $user;
     }
 
-    /**Performing customer login.
+    /**
+     * Performing customer login.
      *
      * @return array
      */
-    public static function performingLogin()
+    public  function performingLogin()
     {
         $login = [
             'view' => 'auth/login',
@@ -79,7 +88,8 @@ class AuthServices
 
             } elseif (($userDB['loginName'] === $loginName) && ($userDB['password'] === $password)){
 
-                $login = self::userDataFromDB($loginName);
+//                $login = self::userDataFromDB($loginName);
+                $login = $userDB;
                 $login['view'] = 'user/user';
 
                 self::userInSession($userDB['loginName']);
@@ -101,7 +111,7 @@ class AuthServices
      *
      * @param $userName
      */
-    protected static function userInSession($userName)
+    public function userInSession($userName)
     {
         session_start();
         $_SESSION['userName'] = $userName;
@@ -110,7 +120,7 @@ class AuthServices
     /**
      * Delete user from Session
      */
-    public static function userOut()
+    public function userOut()
     {
         session_start();
         unset($_SESSION['userName']);
@@ -122,10 +132,9 @@ class AuthServices
      * @param $loginName
      * @return mixed
      */
-    public static function userDataFromDB($loginName)
+    public function userDataFromDB($loginName)
     {
-        $db = new MyActiveRecord();
-        return $db->findTableRow('users', 'loginName', $loginName);
+        return $this->users->findRow('loginName', $loginName);
     }
 
 }

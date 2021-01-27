@@ -1,7 +1,7 @@
 <?php
 
 include "Controller.php";
-include "./services/UserServices.php";
+include_once "./services/UserServices.php";
 
 class UserController extends Controller
 {

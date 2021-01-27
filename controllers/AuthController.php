@@ -1,15 +1,23 @@
 <?php
 
 include "Controller.php";
+include_once "./services/AuthServices.php";
 
 class AuthController extends Controller
 {
+    private $auth;
+
+    public function __construct()
+    {
+        $this->auth = new AuthServices();
+    }
+
     /**
      * Make authorization
      */
     public function index()
     {
-        $userDB = AuthServices::makeAuth();
+        $userDB = $this->auth->makeAuth();
 
         $this->render([$userDB['view'],
             'userData' => $userDB
@@ -21,7 +29,7 @@ class AuthController extends Controller
      */
     public function testLogin()
     {
-        $login = AuthServices::performingLogin();
+        $login = $this->auth->performingLogin();
 
         $this->render([$login['view'],
             'message' => $login['message'],
@@ -34,7 +42,7 @@ class AuthController extends Controller
      */
     public function out()
     {
-        AuthServices::userOut();
+        $this->auth->userOut();
 
         $this->render(['auth/login']);
     }

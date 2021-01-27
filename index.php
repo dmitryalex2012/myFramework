@@ -4,9 +4,6 @@
 $config = require __DIR__ . '/config/config.php';
 
 /** DB connection */
-//$hostname = DB_HOST;
-//$dbname = DB_NAME;
-//$this->dbh = new PDO("mysql:host=$this->$hostname; dbname=$this->$dbname", DB_USER, DB_PASS);
 $DB = new PDO('mysql:host=' . DB_HOST . '; dbname=' . DB_NAME, DB_USER, DB_PASS);
 
 $url = $_GET['url'];

@@ -1,16 +1,17 @@
 <?php
 
-//include_once './models/MyActiveRecord.php';
 include_once './models/Users.php';
 include_once 'AuthServices.php';
 
 class UserServices
 {
     private $users;
+    private $auth;
 
     public function __construct()
     {
         $this->users = new Users();
+        $this->auth = new AuthServices();
     }
 
     /**
@@ -26,7 +27,7 @@ class UserServices
         $user['photo'] = "./../web/photo/" . $_FILES['userPhoto']['name'];
 
         $oldName = self::getUserFromSession();
-        $oldUser = AuthServices::userDataFromDB($oldName);
+        $oldUser = $this->auth->userDataFromDB($oldName);
 
         if (empty($user['loginName'])) {
             $user['loginName'] = $oldUser['loginName'];
@@ -44,7 +45,7 @@ class UserServices
      *
      * @return mixed
      */
-    private static function getUserFromSession()
+    protected function getUserFromSession()
     {
         session_start();
         return $_SESSION['userName'];
@@ -55,7 +56,7 @@ class UserServices
      *
      * @param $userName
      */
-    public static function changeUserInSession($userName)
+    public function changeUserInSession($userName)
     {
         session_start();
         $_SESSION['userName'] = $userName;
@@ -66,7 +67,7 @@ class UserServices
      *
      * @return string
      */
-    public static function sendMessage()
+    public function sendMessage()
     {
         $to = 'dmitryalex2012@gmail.com';
         $subject = 'RegistrationServices confirmation.';
