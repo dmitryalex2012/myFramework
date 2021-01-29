@@ -5,9 +5,7 @@ class MyActiveRecord
     protected $dbh;
 
     /**
-     * MyActiveRecord constructor.
-     *
-     * Load DB parameters.
+     * Loads DB parameters from config.
      */
     public function __construct()
     {
@@ -17,7 +15,7 @@ class MyActiveRecord
 
 
     /**
-     * Find the row with "$postName" identifier from "posts" table of the DB
+     * Finds the row with "$postName" identifier from "posts" table of the DB
      *
      * @param $rowIdentifier
      * @param $identifier
@@ -35,7 +33,7 @@ class MyActiveRecord
     }
 
     /**
-     * Add new user to DB
+     * Adds new user to DB.
      *
      * @param $loginName
      * @param $password
@@ -52,7 +50,7 @@ class MyActiveRecord
     }
 
     /**
-     * Replace the row in DB.
+     * Replaces the row in DB.
      *
      * @param $oldUser
      * @param $user
@@ -80,6 +78,13 @@ class MyActiveRecord
         $sth->execute($execute);
     }
 
+    /**
+     * Checks the parameter on emptiness.
+     *
+     * @param $oldParameter
+     * @param $newParameter
+     * @return mixed
+     */
     private static function verifyEmptyParameter($oldParameter, $newParameter)
     {
         if (empty($newParameter)){

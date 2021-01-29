@@ -12,7 +12,7 @@ class RegistrationServices
     }
 
     /**
-     * RegistrationServices performing.
+     * Performs registration new user.
      *
      * @param $user
      * @param $pass

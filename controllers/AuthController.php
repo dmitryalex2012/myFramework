@@ -38,7 +38,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Out from logged.
+     * Out from log.
      */
     public function out()
     {

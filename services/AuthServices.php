@@ -34,7 +34,7 @@ class AuthServices
     }
 
     /**
-     * UserServices login testing.
+     * Gets user data.
      *
      * @return array
      */
@@ -58,7 +58,7 @@ class AuthServices
     }
 
     /**
-     * Performing customer login.
+     * Performs customer login.
      *
      * @return array
      */
@@ -88,7 +88,6 @@ class AuthServices
 
             } elseif (($userDB['loginName'] === $loginName) && ($userDB['password'] === $password)){
 
-//                $login = self::userDataFromDB($loginName);
                 $login = $userDB;
                 $login['view'] = 'user/user';
 
@@ -107,7 +106,7 @@ class AuthServices
     }
 
     /**
-     * Write user in Session
+     * Writes user in Session.
      *
      * @param $userName
      */
@@ -118,7 +117,7 @@ class AuthServices
     }
 
     /**
-     * Delete user from Session
+     * Deletes user from Session.
      */
     public function userOut()
     {
@@ -127,7 +126,7 @@ class AuthServices
     }
 
     /**
-     * Get user data from DB
+     * Gets user data from DB.
      *
      * @param $loginName
      * @return mixed

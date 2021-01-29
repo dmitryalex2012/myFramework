@@ -5,15 +5,9 @@ include './services/Render.php';
 
 class Controller
 {
-//    public $auth;
-
-//    public function __construct()
-//    {
-//        $this->auth = new AuthServices();
-//    }
-
     /**
-     * Rendering view file (make "$content" for "Layout", user registration check).
+     * Renders view file.
+     * Makes "$content" for layout. Performs user registration check.
      *
      * @param $array
      */
@@ -26,5 +20,4 @@ class Controller
 
         require 'views/layouts/main.php';
     }
-
 }

@@ -18,7 +18,6 @@ class PostServices
      * @param $identifier
      * @return mixed
      */
-
     public function getTableRow($rowIdentifier, $identifier)
     {
         return $this->posts->findTableRow($rowIdentifier, $identifier);

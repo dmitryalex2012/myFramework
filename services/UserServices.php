@@ -15,7 +15,7 @@ class UserServices
     }
 
     /**
-     * Changing user data.
+     * Changes user data.
      *
      * @return string
      */
@@ -52,7 +52,7 @@ class UserServices
     }
 
     /**
-     * Change user name in session.
+     * Changes user name in session.
      *
      * @param $userName
      */

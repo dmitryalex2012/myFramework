@@ -13,7 +13,7 @@ class RegistrationController extends Controller
     }
 
     /**
-     * RegistrationServices new user.
+     * Gets user login and pass. Calls method from service for registration.
      */
     public function registration()
     {

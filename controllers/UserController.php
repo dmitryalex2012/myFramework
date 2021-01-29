@@ -13,7 +13,7 @@ class UserController extends Controller
     }
 
     /**
-     * UserServices data changing.
+     * Calls service for changing user data and send message to user mail.
      */
     public function dataChange()
     {

@@ -5,7 +5,7 @@ include_once "MyActiveRecord.php";
 class Posts extends MyActiveRecord
 {
     /**
-     * Find the row with "$postName" identifier in the DB table (using "MyActiveRecord" class)
+     * Find the row with "$postName" identifier in the DB table.
      *
      * @param $rowIdentifier
      * @param $identifier
