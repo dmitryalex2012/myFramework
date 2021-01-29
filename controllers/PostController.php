@@ -4,7 +4,7 @@ include_once './services/PostServices.php';
 
 class PostController extends Controller
 {
-    protected $post;
+    public $post;
 
     public function __construct()
     {

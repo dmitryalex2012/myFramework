@@ -5,7 +5,7 @@ include_once "./services/AuthServices.php";
 
 class AuthController extends Controller
 {
-    private $auth;
+    public $auth;
 
     public function __construct()
     {
