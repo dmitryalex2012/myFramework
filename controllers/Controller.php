@@ -6,8 +6,8 @@ include './services/Render.php';
 class Controller
 {
     /**
+     * Gets "$content" for layout. Performs user registration check.
      * Renders view file.
-     * Makes "$content" for layout. Performs user registration check.
      *
      * @param $array
      */
@@ -15,9 +15,19 @@ class Controller
     {
         $content = Render::getViewFile($array);
 
-        $auth = new AuthServices();
-        $user = $auth->findLogin();
+        $user = $this->auth();
 
         require 'views/layouts/main.php';
+    }
+
+    /**
+     * Calls "AuthServices" for user authentication.
+     *
+     * @return array
+     */
+    public function auth()
+    {
+        $auth = new AuthServices();
+        return $auth->findLogin();
     }
 }
