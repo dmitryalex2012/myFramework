@@ -32,3 +32,9 @@ else {
         $controller->$action();
     }
 }
+
+//$content = $data[0];
+$content = "<p>hello</p>";
+$user = $data[1];
+
+require 'views/layouts/main.php';

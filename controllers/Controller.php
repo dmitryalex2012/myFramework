@@ -17,7 +17,11 @@ class Controller
 
         $user = $this->auth();
 
-        require 'views/layouts/main.php';
+//        require 'views/layouts/main.php';
+        return $data = [
+            0 => $content,
+            1 => $user
+        ];
     }
 
     /**
