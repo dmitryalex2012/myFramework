@@ -13,38 +13,50 @@ class AuthController extends Controller
     }
 
     /**
-     * Make authorization
+     * Makes authorization
+     *
+     * @return array
      */
     public function index()
     {
         $userDB = $this->auth->makeAuth();
 
-        $this->render([$userDB['view'],
+        return $this->render([$userDB['view'],
             'userData' => $userDB
         ]);
+
+//        return $this->render('cartList', [
+//            'cart' => $cart,
+//            'totalQuantity' => $totalQuantity,
+//            'model' => $this->model                                           // object in ActiveForm (for email sending)
+//        ]);
     }
 
     /**
-     * Determination the user presence in DB.
+     * Determines the user presence in DB.
+     *
+     * @return array
      */
     public function testLogin()
     {
         $login = $this->auth->performingLogin();
 
-        $this->render([$login['view'],
+        return $this->render([$login['view'],
             'message' => $login['message'],
             'userData' => $login
         ]);
     }
 
     /**
-     * Out from log.
+     * Outs from log.
+     *
+     * @return array
      */
     public function out()
     {
         $this->auth->userOut();
 
-        $this->render(['auth/login']);
+        return $this->render(['auth/login']);
     }
 }
 

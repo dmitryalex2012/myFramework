@@ -14,6 +14,8 @@ class UserController extends Controller
 
     /**
      * Calls service for changing user data and send message to user mail.
+     *
+     * @return array
      */
     public function dataChange()
     {
@@ -22,7 +24,7 @@ class UserController extends Controller
         $sendMail = $this->userServices->sendMessage();
         $result .= "<br>" . $sendMail;
 
-        $this->render(['user/dataChanged',
+        return $this->render(['user/dataChanged',
             'message' => $result
         ]);
     }

@@ -13,7 +13,9 @@ class RegistrationController extends Controller
     }
 
     /**
-     * Gets user login and pass. Calls method from service for registration.
+     * * Gets user login and pass. Calls method from service for registration.
+     *
+     * @return array
      */
     public function registration()
     {
@@ -22,9 +24,9 @@ class RegistrationController extends Controller
         $confirmPass = $_POST['confirmPassword'];
         $registration = $this->registrationServices->makeRegistration($user, $pass, $confirmPass);
 
-        $this->render([$registration['view'],
+        return $this->render([$registration['view'],
             'message' => $registration['message']
-            ]);
+        ]);
     }
 }
 

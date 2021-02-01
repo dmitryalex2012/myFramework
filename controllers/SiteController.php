@@ -3,11 +3,14 @@ include "Controller.php";
 
 class SiteController extends Controller
 {
+
     /**
      * Performs rendering index page.
+     *
+     * @return array
      */
     public function index()
     {
-        $this->render(['site/index']);
+        return $this->render(['site/index']);
     }
 }

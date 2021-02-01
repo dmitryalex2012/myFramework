@@ -15,14 +15,18 @@ class PostController extends Controller
     }
 
     /**
+     * Gets data from DB using "getTableRow" method of the "PostServices" service.
      *
-     *
-     * @param $postName
+     * @return array
      */
-    public function index($postName)
+    public function index()
     {
-        $this->render([ $postName .'/index',
-            'viewFile' => $this->post->getTableRow('postName', $postName)
+        $postName = $_GET["valueKey"];
+
+        $viewFile = $this->post->getTableRow('postName', $postName);
+
+        return $this->render([ $postName .'/index',
+            'viewFile' => $viewFile
             ]);
     }
 }

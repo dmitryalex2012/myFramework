@@ -6,10 +6,11 @@ include './services/Render.php';
 class Controller
 {
     /**
-     * Gets "$content" for layout. Performs user registration check.
      * Renders view file.
+     * Gets "$content" for layout. Performs user registration check.
      *
      * @param $array
+     * @return array
      */
     public function render($array)
     {
@@ -17,7 +18,6 @@ class Controller
 
         $user = $this->auth();
 
-//        require 'views/layouts/main.php';
         return $data = [
             0 => $content,
             1 => $user
