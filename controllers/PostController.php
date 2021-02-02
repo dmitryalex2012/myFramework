@@ -23,10 +23,10 @@ class PostController extends Controller
     {
         $postName = $_GET["valueKey"];
 
-        $viewFile = $this->post->getTableRow('postName', $postName);
+        $post = $this->post->getTableRow('postName', $postName);
 
-        return $this->render([ $postName .'/index',
-            'viewFile' => $viewFile
+        return $this->render($postName .'/index', [
+            'post' => $post
             ]);
     }
 }

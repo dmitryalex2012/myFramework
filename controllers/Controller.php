@@ -9,12 +9,13 @@ class Controller
      * Renders view file.
      * Gets "$content" for layout. Performs user registration check.
      *
+     * @param $viewName
      * @param $array
      * @return array
      */
-    public function render($array)
+    public function render($viewName, $array)
     {
-        $content = Render::getViewFile($array);
+        $content = Render::getViewFile($viewName, $array);
 
         $user = $this->auth();
 

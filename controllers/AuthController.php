@@ -21,15 +21,9 @@ class AuthController extends Controller
     {
         $userDB = $this->auth->makeAuth();
 
-        return $this->render([$userDB['view'],
+        return $this->render($userDB['view'], [
             'userData' => $userDB
         ]);
-
-//        return $this->render('cartList', [
-//            'cart' => $cart,
-//            'totalQuantity' => $totalQuantity,
-//            'model' => $this->model                                           // object in ActiveForm (for email sending)
-//        ]);
     }
 
     /**
@@ -41,7 +35,7 @@ class AuthController extends Controller
     {
         $login = $this->auth->performingLogin();
 
-        return $this->render([$login['view'],
+        return $this->render($login['view'], [
             'message' => $login['message'],
             'userData' => $login
         ]);
@@ -56,7 +50,7 @@ class AuthController extends Controller
     {
         $this->auth->userOut();
 
-        return $this->render(['auth/login']);
+        return $this->render('auth/login', null);
     }
 }
 

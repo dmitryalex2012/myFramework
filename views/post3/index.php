@@ -1,22 +1,22 @@
 <?php
-/* @var $viewFile array */
+/* @var $post array */
 ?>
 <div class="contentPost">
     <h1>
         <?php
-        echo 'Post 3. ' . $viewFile['title'] . ' programming language.';
+        echo 'Post 3. ' . $post['title'] . ' programming language.';
         ?>
     </h1>
 
     <div class="pContent">
         <?php
-        echo $viewFile['content'];
+        echo $post['content'];
         ?>
     </div>
 
     <div class="pAuthor">
         <?php
-        echo $viewFile['author'];
+        echo $post['author'];
         ?>
     </div>
 </div>

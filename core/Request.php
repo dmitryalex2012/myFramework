@@ -1,7 +1,8 @@
 <?php
+
 class Request
 {
-    public function start($controllerName, $action)
+    public static function start($controllerName, $action)
     {
         require 'controllers/' . $controllerName . '.php';
 

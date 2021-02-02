@@ -1,5 +1,5 @@
 <?php
-/* @var $viewFile array */
+/* @var $post array */
 ?>
 
 
@@ -7,7 +7,7 @@
 
     <h1>
         <?php
-        echo 'Post 1. ' . $viewFile['title'] . ' programming language.';
+        echo 'Post 1. ' . $post['title'] . ' programming language.';
         ?>
     </h1>
 
@@ -18,7 +18,7 @@
             <h5>Description:</h5>
 
             <?php
-            echo $viewFile['content'];
+            echo $post['content'];
             ?>
 
         </div>
@@ -28,7 +28,7 @@
             <h5>Code example:</h5>
 
             <?php
-            echo $viewFile['codeExample'];
+            echo $post['codeExample'];
             ?>
 
         </div>
@@ -37,7 +37,7 @@
 
     <div class="pAuthor">
         <?php
-        echo $viewFile['author'];
+        echo $post['author'];
         ?>
     </div>
 </div>
