@@ -50,7 +50,7 @@ class AuthController extends Controller
     {
         $this->auth->userOut();
 
-        return $this->render('auth/login', null);
+        return $this->render('auth/login');
     }
 }
 
