@@ -1,15 +1,19 @@
 <?php
 
+include "./config/config.php";
+
 class MyActiveRecord
 {
     protected $dbh;
 
     /**
-     * Loads DB parameters from config.
+     * Loads PDO object from config.
      */
     public function __construct()
     {
-        global $DB;
+        /* @var $DB PDO object */
+
+        include "./config/config.php";
         $this->dbh = $DB;
     }
 

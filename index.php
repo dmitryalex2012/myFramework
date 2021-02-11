@@ -1,10 +1,7 @@
 <?php
 
-/** Config inclusion. */
+/** Config inclusion. DB connection. */
 $config = require __DIR__ . '/config/config.php';
-
-/** DB connection. */
-$DB = new PDO('mysql:host=' . DB_HOST . '; dbname=' . DB_NAME, DB_USER, DB_PASS);
 
 include 'core/autoloader.php';
 
