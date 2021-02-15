@@ -5,6 +5,8 @@ $config = require __DIR__ . '/config/config.php';
 
 include 'core/autoloader.php';
 
+$DB = new LoadDB($config);
+
 /** URL analysis. Getting "controller" and "action" from URL. */
 $router = new Router();
 $controller = $router->getController();

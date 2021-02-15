@@ -1,8 +1,15 @@
 <?php
 
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'myframework');
-define('DB_USER', 'sitemanufactura');
-define('DB_PASS', '200384');
+//define('DB_HOST', 'localhost');
+//define('DB_NAME', 'myframework');
+//define('DB_USER', 'sitemanufactura');
+//define('DB_PASS', '200384');
 
-$DB = new PDO('mysql:host=' . DB_HOST . '; dbname=' . DB_NAME, DB_USER, DB_PASS);
+//$DB = new PDO('mysql:host=' . DB_HOST . '; dbname=' . DB_NAME, DB_USER, DB_PASS);
+
+return [
+    'host' => 'DB_HOST',
+    'name' => 'myframework',
+    'user' => 'sitemanufactura',
+    '$params' => '200384'
+];
